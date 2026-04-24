@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Product</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Add Product</h1>
+<form method="POST">
+<label>Name</label><br>
+<input type="text" name="name" required><br><br>
+<label>Price</label><br>
+<input type="number" name="price" step="0.01" required><br><br>
+<label>Stock</label><br>
+<input type="number" name="stock" required><br><br>
+<label>Supplier</label><br>
+<select name="supplier_id">
+{% for supplier in suppliers %}
+<option value="{{ supplier[0] }}">{{ supplier[1] }}</option>
+{% endfor %}
+</select>
+<br><br>
+<button type="submit">Add Product</button>
+</form>
+<br>
+<a href="/products">
+<button>Back</button>
+</a>
+</div>
+</body>
+</html>

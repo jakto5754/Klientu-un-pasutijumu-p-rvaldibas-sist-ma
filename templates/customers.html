@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Customers</h1>
+    <a href="{{ url_for('add_customer') }}">
+        <button>Add Customer</button>
+    </a>
+    <a href="{{ url_for('edit_customer') }}">
+        <button>Edit Customer</button>
+    </a>
+    <a href="{{ url_for('remove_customer') }}">
+        <button>Remove Customer</button>
+    </a>
+<form method="GET">
+    <select name="sort_by">
+        <option value="Full_Name">Name</option>
+        <option value="Email">Email</option>
+    </select>
+    <select name="order">
+        <option value="ASC">Ascending</option>
+        <option value="DESC">Descending</option>
+    </select>
+    <button type="submit">Sort</button>
+</form>
+{% for c in customers %}
+    <p>{{ c[1] }} - {{ c[2] }}</p>
+{% endfor %}
+    <a href="/">
+        <button>Back</button>
+    </a>
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Remove Order</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Remove Order</h1>
+<form method="POST">
+<label>Select Order</label><br><br>
+<select name="order_id">
+{% for o in orders %}
+<option value="{{ o[0] }}">Order #{{ o[0] }}</option>
+{% endfor %}
+</select>
+<br><br>
+<button type="submit">Delete Order</button>
+</form>
+<br>
+<a href="/orders">
+<button>Back</button>
+</a>
+</div>
+</body>
+</html>

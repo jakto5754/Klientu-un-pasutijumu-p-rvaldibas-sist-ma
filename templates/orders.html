@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+    <h1>Orders</h1>
+    <a href="{{ url_for('add_order') }}">
+        <button>Add Order</button>
+    </a>
+    <a href="{{ url_for('edit_order') }}">
+        <button>Edit Order</button>
+    </a>
+    <a href="{{ url_for('remove_order') }}">
+        <button>Remove Order</button>
+    </a>
+    <a href="{{ url_for('add_order_detail') }}">
+    <button>Add Product to Order</button>
+    </a>
+    <a href="{{ url_for('edit_order_detail') }}">
+        <button>Edit Order Detail</button>
+    </a>
+    <a href="{{ url_for('remove_order_detail') }}">
+        <button>Remove Order Detail</button>
+    </a>
+<form method="GET">
+    <select name="sort_by">
+        <option value="Date">Date</option>
+        <option value="Time">Time</option>
+    </select>
+    <select name="order">
+        <option value="ASC">Ascending</option>
+        <option value="DESC">Descending</option>
+    </select>
+    <button type="submit">Sort</button>
+</form>
+{% for o in orders %}
+    <p>{{ o[1] }} - {{ o[2] }}</p>
+{% endfor %}
+    <a href="/">
+        <button>Back</button>
+    </a>
+</div>
+</body>
+</html>

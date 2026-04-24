@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Order</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Add Order</h1>
+<form method="POST">
+<label>Date</label><br>
+<input type="date" name="date" required><br><br>
+<label>Time</label><br>
+<input type="time" name="time" required><br><br>
+<label>Customer</label><br>
+<select name="customer_id">
+{% for c in customers %}
+<option value="{{ c[0] }}">{{ c[1] }}</option>
+{% endfor %}
+</select>
+<br><br>
+<button type="submit">Create Order</button>
+</form>
+<br>
+<a href="/orders"><button>Back</button></a>
+</div>
+</body>
+</html>

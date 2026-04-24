@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Remove Order Detail</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Remove Product from Order</h1>
+<form method="POST">
+<label>Select Item</label><br><br>
+<select name="detail_id">
+{% for d in details %}
+<option value="{{ d[0] }}">
+Order #{{ d[1] }} - {{ d[2] }} (Qty: {{ d[3] }})
+</option>
+{% endfor %}
+</select>
+<br><br>
+<button type="submit">Remove</button>
+</form>
+<br>
+<a href="/orders">
+<button>Back</button>
+</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Supplier</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Edit Supplier</h1>
+<form method="GET">
+<label>Select Supplier</label><br><br>
+<select name="supplier_id">
+{% for c in suppliers %}
+<option value="{{ c[0] }}">{{ c[1] }}</option>
+{% endfor %}
+</select>
+<button type="submit">Load Supplier</button>
+</form>
+<hr>
+{% if supplier %}
+<h2>Edit Information</h2>
+<form method="POST" action="{{ url_for('update_supplier') }}">
+<input type="hidden" name="supplier_id" value="{{ supplier[0] }}">
+<label>Company Name</label><br>
+<input type="text" name="company_name" value="{{ supplier[1] }}"><br><br>
+<label>Email</label><br>
+<input type="email" name="email" value="{{ supplier[2] }}"><br><br>
+<button type="submit">Save Changes</button>
+</form>
+{% endif %}
+<br>
+<a href="/suppliers">
+<button>Back</button>
+</a>
+</div>
+</body>
+</html>

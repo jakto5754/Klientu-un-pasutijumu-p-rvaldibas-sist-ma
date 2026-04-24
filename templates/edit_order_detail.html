@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Edit Order Detail</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Edit Order Detail</h1>
+<form method="GET">
+<label>Select Item</label><br><br>
+<select name="detail_id">
+{% for d in details %}
+<option value="{{ d[0] }}">
+Order #{{ d[1] }} - {{ d[2] }} (Qty: {{ d[3] }})
+</option>
+{% endfor %}
+</select>
+<button type="submit">Load</button>
+</form>
+<hr>
+{% if detail %}
+<form method="POST" action="{{ url_for('update_order_detail') }}">
+<input type="hidden" name="detail_id" value="{{ detail[0] }}">
+<label>Product</label><br>
+<select name="product_id">
+{% for p in products %}
+<option value="{{ p[0] }}"
+{% if p[0] == detail[2] %}selected{% endif %}>
+{{ p[1] }}
+</option>
+{% endfor %}
+</select>
+<br><br>
+<label>Quantity</label><br>
+<input type="number" name="quantity" value="{{ detail[3] }}"><br><br>
+<button type="submit">Save Changes</button>
+</form>
+{% endif %}
+<br>
+<a href="/orders"><button>Back</button></a>
+</div>
+</body>
+</html>
